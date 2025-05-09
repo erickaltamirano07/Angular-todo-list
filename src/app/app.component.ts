@@ -8,7 +8,4 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
-  welcome = 'Hola!';
-  tasks = ['Instalar el Angular CLI', 'Crear proyecto', 'Crear componentes'];
-}
+export class AppComponent {}
