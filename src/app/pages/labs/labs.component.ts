@@ -10,4 +10,6 @@ import { CommonModule } from '@angular/common';
 export class LabsComponent {
   welcome = 'Hola!';
   tasks = ['Instalar el Angular CLI', 'Crear proyecto', 'Crear componentes'];
+  name = 'Erick';
+  age = 18;
 }
