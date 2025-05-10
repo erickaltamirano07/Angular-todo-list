@@ -1,18 +1,25 @@
-<h1>Hola este es mi nuevo proyecto</h1>
-<h2>{{ welcome }}</h2>
-<ul>
-  <!-- Itera sobre el array 'tasks' y muestra cada tarea en un elemento de lista -->
-  <li *ngFor="let task of tasks">{{ task }}</li>
-</ul>
-<hr />
-<h2>{{ "Hola".repeat(4) }}</h2>
-<p>La suma de 3 + 2 es {{ 3 + 3 }}</p>
-<p>Hola soy {{ name }} y mi edad es {{ age }}</p>
-<hr />
-<img [src]="img" alt="" />
-<input type="text" [value]="name" />
-<button [disabled]="disabled">Click me</button>
-<hr />
-<p>person: {{ person.name }}</p>
-<img [src]="person.avatar" alt="" />
-<input type="number" [value]="person.age" />
+<div class="container">
+  <h1>Hola este es mi nuevo proyecto</h1>
+  <h2>{{ welcome }}</h2>
+  <ul>
+    <!-- Itera sobre el array 'tasks' y muestra cada tarea en un elemento de lista -->
+    <li *ngFor="let task of tasks">{{ task }}</li>
+  </ul>
+  <hr />
+  <h2>{{ "Hola".repeat(4) }}</h2>
+  <p>La suma de 3 + 2 es {{ 3 + 3 }}</p>
+  <p>Hola soy {{ name }} y mi edad es {{ age }}</p>
+  <hr />
+  <img [src]="img" alt="" />
+  <input type="text" [value]="name" />
+  <button [disabled]="disabled">Click me</button>
+  <hr />
+  <p>person: {{ person.name }}</p>
+  <img [src]="person.avatar" alt="" />
+  <input type="number" [value]="person.age" />
+  <hr />
+  <button (click)="clickHandler()">click me</button>
+  <button (dblclick)="clickHandler()">Dobleclick me</button>
+  <p>(change)</p>
+  <input type="number" [value]="person.age" (change)="changeHandler($event)" />
+</div>
