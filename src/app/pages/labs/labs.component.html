@@ -30,4 +30,12 @@
   <h1>Signals</h1>
   <p>Hola soy {{ name1() }}</p>
   <input type="text" [value]="name1()" (change)="changeSignalHandler($event)" />
+  <hr />
+  <h1>Estructuras de control</h1>
+  <h2>For</h2>
+  <ul>
+    <!-- Itera sobre el array 'tasksSignal' y muestra cada tarea en un elemento de lista -->
+    <p>Total: {{ tasksSignal().length }}</p>
+    <li *ngFor="let task of tasksSignal(); index as i">{{ i }} {{ task }}</li>
+  </ul>
 </div>
