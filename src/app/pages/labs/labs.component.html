@@ -38,4 +38,13 @@
     <p>Total: {{ tasksSignal().length }}</p>
     <li *ngFor="let task of tasksSignal(); index as i">{{ i }} {{ task }}</li>
   </ul>
+
+  <hr />
+  <div *ngIf="1 !== 1">My content</div>
+  <div *ngIf="name1() === 'Erick'">Soy Erick</div>
+  <input type="number" [value]="person1().age" (change)="changeAge($event)" />
+  <div *ngIf="person1().name === 'erick' && person1().age > 18; else elseBlock">
+    Soy Erick y soy mayor
+  </div>
+  <ng-template #elseBlock> Soy Erick y soy menor de edad </ng-template>
 </div>
