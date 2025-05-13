@@ -42,11 +42,24 @@
   <hr />
   <div *ngIf="1 !== 1">My content</div>
   <div *ngIf="name1() === 'Erick'">Soy Erick</div>
+  @if(name1() === 'Erick'){
+  <div>Soy Erick</div>
+
+  }
+
   <input type="number" [value]="person1().age" (change)="changeAge($event)" />
   <div *ngIf="person1().name === 'erick' && person1().age > 18; else elseBlock">
     Soy Erick y soy mayor
   </div>
   <ng-template #elseBlock> Soy Erick y soy menor de edad </ng-template>
+  <hr />
+  <h2>If Else new mthod</h2>
+  @if(person1().name === 'erick' && person1().age > 18){
+  <div>Soy Erick y soy mayor</div>
+  } @else {
+  <div>Soy Erick y soy menor de edad</div>
+  }
+
   <hr />
   <h1>Switch</h1>
   <input type="text" [value]="person1().name" (change)="changeName($event)" />
