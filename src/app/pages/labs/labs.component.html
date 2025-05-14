@@ -3,7 +3,9 @@
   <h2>{{ welcome }}</h2>
   <ul>
     <!-- Itera sobre el array 'tasks' y muestra cada tarea en un elemento de lista -->
-    <li *ngFor="let task of tasks">{{ task }}</li>
+    @for (task of tasks; track task) {
+      <li>{{ task }}</li>
+    }
   </ul>
   <hr />
   <h2>{{ "Hola".repeat(4) }}</h2>
@@ -36,38 +38,57 @@
   <ul>
     <!-- Itera sobre el array 'tasksSignal' y muestra cada tarea en un elemento de lista -->
     <p>Total: {{ tasksSignal().length }}</p>
-    <li *ngFor="let task of tasksSignal(); index as i">{{ i }} {{ task }}</li>
+    @for (task of tasksSignal(); track task; let i = $index) {
+      <li>{{ i }} {{ task }}</li>
+    }
   </ul>
 
   <hr />
-  <div *ngIf="1 !== 1">My content</div>
-  <div *ngIf="name1() === 'Erick'">Soy Erick</div>
+  @if (1 !== 1) {
+    <div>My content</div>
+  }
+  @if (name1() === 'Erick') {
+    <div>Soy Erick</div>
+  }
   @if(name1() === 'Erick'){
-  <div>Soy Erick</div>
+    <div>Soy Erick</div>
 
   }
 
   <input type="number" [value]="person1().age" (change)="changeAge($event)" />
-  <div *ngIf="person1().name === 'erick' && person1().age > 18; else elseBlock">
-    Soy Erick y soy mayor
-  </div>
-  <ng-template #elseBlock> Soy Erick y soy menor de edad </ng-template>
+  @if (person1().name === 'erick' && person1().age > 18) {
+    <div>
+      Soy Erick y soy mayor
+    </div>
+  } @else {
+    Soy Erick y soy menor de edad
+  }
   <hr />
   <h2>If Else new mthod</h2>
   @if(person1().name === 'erick' && person1().age > 18){
-  <div>Soy Erick y soy mayor</div>
+    <div>Soy Erick y soy mayor</div>
   } @else {
-  <div>Soy Erick y soy menor de edad</div>
+    <div>Soy Erick y soy menor de edad</div>
   }
 
   <hr />
   <h1>Switch</h1>
   <input type="text" [value]="person1().name" (change)="changeName($event)" />
-  <div [ngSwitch]="person1().name">
-    <p *ngSwitchCase="'nicolas'">Yo soy Nicolas</p>
-    <p *ngSwitchCase="'juan'">Yo soy Juan</p>
-    <p *ngSwitchCase="'erick'">Yo soy erick</p>
-    <p *ngSwitchDefault>Yo no soy nadie</p>
+  <div>
+    @switch (person1().name) {
+      @case ('nicolas') {
+        <p>Yo soy Nicolas</p>
+      }
+      @case ('juan') {
+        <p>Yo soy Juan</p>
+      }
+      @case ('erick') {
+        <p>Yo soy erick</p>
+      }
+      @default {
+        <p>Yo no soy nadie</p>
+      }
+    }
   </div>
   <hr />
   <h1>Formulario</h1>
@@ -82,49 +103,49 @@
         height="100"
         width="100"
         [attr.fill]="colorCtrl.value"
-      />
-    </g>
-  </svg>
-  <hr />
-  <input type="number" [formControl]="widthCtrl" />
-  <span class="box" [style.width.px]="widthCtrl.value"></span>
-  <hr />
-  <p>
-    <input type="text" [formControl]="nameCtrl" /><br />
-    <span
-      class="message-error"
-      [class.show]="nameCtrl.invalid && nameCtrl.touched"
-    >
-      Nombre invalido</span
-    >
-  </p>
-  <p>
-    <input type="text" />
-  </p>
+        />
+      </g>
+    </svg>
+    <hr />
+    <input type="number" [formControl]="widthCtrl" />
+    <span class="box" [style.width.px]="widthCtrl.value"></span>
+    <hr />
+    <p>
+      <input type="text" [formControl]="nameCtrl" /><br />
+      <span
+        class="message-error"
+        [class.show]="nameCtrl.invalid && nameCtrl.touched"
+        >
+        Nombre invalido</span
+        >
+      </p>
+      <p>
+        <input type="text" />
+      </p>
 
-  <hr />
-  <h2>New for</h2>
+      <hr />
+      <h2>New for</h2>
 
-  @for(task of tasksSignal(); track task; let i=$index){
-  <ul>
-    <li>{{ i }} {{ task }}</li>
-  </ul>
-  }@empty {
-  <li><strong>la lista esta vacia</strong></li>
-  }
+      @for(task of tasksSignal(); track task; let i=$index){
+        <ul>
+          <li>{{ i }} {{ task }}</li>
+        </ul>
+        }@empty {
+        <li><strong>la lista esta vacia</strong></li>
+      }
 
-  <hr />
-  <h2>New switch</h2>
-  <input type="text" [value]="person1().name" (change)="changeName($event)" />
-  <div>
-    @switch (person1().name) { @case ('nicolas') {
-    <p>Yo soy nicolas</p>
-    } @case ('juan') {
-    <p>Yo soy juan</p>
-    } @case ('erick') {
-    <p>Yo soy Erick</p>
-    } @default {
-    <p>Yo no soy nadie</p>
-    } }
-  </div>
-</div>
+      <hr />
+      <h2>New switch</h2>
+      <input type="text" [value]="person1().name" (change)="changeName($event)" />
+      <div>
+        @switch (person1().name) { @case ('nicolas') {
+          <p>Yo soy nicolas</p>
+          } @case ('juan') {
+          <p>Yo soy juan</p>
+          } @case ('erick') {
+          <p>Yo soy Erick</p>
+          } @default {
+          <p>Yo no soy nadie</p>
+          } }
+        </div>
+      </div>
