@@ -101,4 +101,30 @@
   <p>
     <input type="text" />
   </p>
+
+  <hr />
+  <h2>New for</h2>
+
+  @for(task of tasksSignal(); track task; let i=$index){
+  <ul>
+    <li>{{ i }} {{ task }}</li>
+  </ul>
+  }@empty {
+  <li><strong>la lista esta vacia</strong></li>
+  }
+
+  <hr />
+  <h2>New switch</h2>
+  <input type="text" [value]="person1().name" (change)="changeName($event)" />
+  <div>
+    @switch (person1().name) { @case ('nicolas') {
+    <p>Yo soy nicolas</p>
+    } @case ('juan') {
+    <p>Yo soy juan</p>
+    } @case ('erick') {
+    <p>Yo soy Erick</p>
+    } @default {
+    <p>Yo no soy nadie</p>
+    } }
+  </div>
 </div>
